@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 8</title>
+    <script src="assets/data.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .card {
+        background-color: yellow;
+        padding: 30px;
+        margin: 10px;
+        float: left;
+      }
+
+      .eachResto {
+        width: 300px;
+        height: 300px;
+        padding: 15px;
+        border: 1px solid #555;
+        float: left;
+        margin: 10px;
+        background-color: azure;
+        box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+      }
+
+      .eachResto img {
+        width: 100%;
+      }
+
+      .eachResto h3 span.statusResto {
+        font-size: 65%;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="restoResults"></div>
+  </body>
+</html>
+<script>
+  var restonya = '';
+  for (var r=0; r < restos.length; r++) {
+    restonya = restonya + '<div class="eachResto"><img src="assets/img/' + restos[r].foto + '" /><h3>' + restos[r].nama +
+      '<span class="statusResto">' + restos[r].status + 
+        '</span></h3><h4>' + restos[r].alamat +
+        '</h4><h5>' + restos[r].tel + '</h5></div>';
+  }
+  document.getElementById('restoResults').innerHTML = restonya;
+</script>
+
+
