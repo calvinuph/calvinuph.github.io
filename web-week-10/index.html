@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 10</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #one {
+        background-color: aqua;
+        width: 50%;
+        height: 100vh;
+        display: none;
+      }
+
+      #two {
+        background-color: red;
+        width: 80%;
+        height: 100vh;
+        display: none;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one">
+      <h1 class="main_title"></h1>
+      <h2 class="subhead"></h2>
+    </div>
+    <div id="two">
+      <div class="box"></div>
+      <h1 class="main_title"></h1>
+      <h2 class="subhead"></h2>
+    </div>
+  </body>
+</html>
+<script>
+  var qs = window.location.search;
+  var ur = new URLSearchParams(qs);
+  var maintitle = ur.get('maintitle');
+  var subhead = ur.get('subhead');
+  var template = ur.get('tmp');
+
+  var tmp_maintitle = document.getElementsByClassName('main_title');
+  var tmp_subhead = document.getElementsByClassName('subhead');
+
+  if (template == 0) {
+    document.getElementById('one').style.display = "block";
+  } else {
+    document.getElementById('two').style.display = "block";
+  }
+  
+
+  tmp_maintitle[template].innerHTML = maintitle;
+  tmp_subhead[template].innerHTML = subhead;
+
+</script>
+
+
