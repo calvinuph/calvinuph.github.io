@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 11</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        padding:10px;
+        float: left;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="disini">
+
+    </div>
+  </body>
+</html>
+<script>
+  var data = {
+    'Products' : [
+      {
+        "name" : "Baju Baru",
+        "price" : 15000,
+        "sku" : 1,
+        "category" : "baju"
+      },
+      {
+        "name" : "Baju Bekas",
+        "price" : 5000,
+        "sku" : 2,
+        "category" : "baju"
+      },
+      {
+        "name" : "Celana Baru",
+        "price" : 10000,
+        "sku" : 3,
+        "category" : "celana"
+      }
+    ]
+  };
+
+  // /////// filter by sku
+  var skunya = data.Products.filter(function (el) {
+    return el.sku == 3;
+  });
+  // alert(skunya[0].name + ' ' + skunya[0].price);
+
+
+  // /////// filter semua dengan harga 10 ribu or less
+  var dibawahsepuluh = data.Products.filter(function (el) {
+    return el.price <= 10000;
+  });
+  //alert(dibawahsepuluh.length);
+
+  var hasildibawahsepuluhribu = '';
+  for (var i = 0; dibawahsepuluh.length > i; i++) {
+    hasildibawahsepuluhribu = hasildibawahsepuluhribu + '<div class="box">' + dibawahsepuluh[i].name + '</div>';
+  }
+  document.getElementById('disini').innerHTML = hasildibawahsepuluhribu;
+  //alert(hasildibawahsepuluhribu);
+ 
+</script>
+
+
