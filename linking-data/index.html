@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh link data</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        padding:10px;
+        float: left;
+        border: 1px solid black;
+      }
+
+      .samping {
+        width: 100px;
+        height: 500px;
+        float: left;
+      }
+      #disini {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="samping">
+      <ul id="disana"></ul>
+    </div>
+    
+    <div id="disini"></div>
+  </body>
+</html>
+<script>
+var qs = window.location.search;
+  var ur = new URLSearchParams(qs);
+  var skudicari = ur.get('skudicari');
+
+  // ini preventif bila get url tidak diisi selalu buat skudicari = 1 (supaya page tidak blank)
+  if (!skudicari) {
+    skudicari = 1;
+  }
+
+  var data = {
+    'Products' : [
+      {
+        "name" : "Baju Baru",
+        "price" : 15000,
+        "sku" : 1,
+        "category" : "baju",
+        "img" : "itu.jpg"
+      },
+      {
+        "name" : "Baju Bekas",
+        "price" : 5000,
+        "sku" : 2,
+        "category" : "baju",
+        "img" : "kebuli.jpg"
+      },
+      {
+        "name" : "Celana Baru",
+        "price" : 10000,
+        "sku" : 3,
+        "category" : "celana",
+        "img" : "kopi.jpg"
+      }
+    ]
+  };
+
+
+
+// /////////// filter by sku -- tidak perlu loop krn hasil hanya 1 == index array pasti [0]
+
+// manggil data dari data > Products dengan sku = 3
+// masukkan array hasil paggilan ke dalam variable bernama skunya
+var skunya = data.Products.filter(function (el) {
+  return el.sku == skudicari;
+});
+
+
+// pasang variable bernama skunya
+// ke dalam inner HTML dari elemen dengan id="disini"
+document.getElementById('disini').innerHTML = '<div class="box"><img style="width:130px;" src="assets/img/' + skunya[0].img + '"><br>' + skunya[0].name + '<br>harga: ' + skunya[0].price + '</div>';
+
+// panggil semuanya
+var semua = '';
+for (var i = 0; data.Products.length > i; i++) {
+  semua = semua + '<li><a href="index.html?skudicari=' + data.Products[i].sku + '"><img style="width:90px;" src="assets/img/' + data.Products[i].img + '"><br>' + data.Products[i].name + '</a></li>';
+}
+document.getElementById('disana').innerHTML = semua;
+
+</script>
+
+
+
